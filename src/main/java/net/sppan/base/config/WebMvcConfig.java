@@ -3,7 +3,7 @@ package net.sppan.base.config;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sppan.base.config.intercepter.CommonIntercepter;
+import net.sppan.base.config.interceptor.CommonInterceptor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -22,7 +22,7 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4;
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	@Autowired
-	private CommonIntercepter commonIntercepter;
+	private CommonInterceptor commonInterceptor;
 
 	/**
 	 * fastJson相关设置
@@ -73,7 +73,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	 */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(commonIntercepter).addPathPatterns("/**");
+		registry.addInterceptor(commonInterceptor).addPathPatterns("/**");
 		super.addInterceptors(registry);
 	}
 	
