@@ -24,6 +24,11 @@ public class ShiroManager {
         return new LifecycleBeanPostProcessor();
     }
 
+    /**
+     * 开启注解控制权限的方式，AOP式方法级权限检查
+     *
+     * @return
+     */
     @Bean(name = "defaultAdvisorAutoProxyCreator")
     @ConditionalOnMissingBean
     @DependsOn("lifecycleBeanPostProcessor")
@@ -31,12 +36,16 @@ public class ShiroManager {
         DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
         defaultAdvisorAutoProxyCreator.setProxyTargetClass(true);
         return defaultAdvisorAutoProxyCreator;
-
     }
 
+    /**
+     * 开启注解控制权限的方式
+     * @param securityManager
+     * @return
+     */
     @Bean
     @ConditionalOnMissingBean
-    public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor(DefaultSecurityManager securityManager) {
+    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(DefaultSecurityManager securityManager) {
         AuthorizationAttributeSourceAdvisor aasa = new AuthorizationAttributeSourceAdvisor();
         aasa.setSecurityManager(securityManager);
         return new AuthorizationAttributeSourceAdvisor();
