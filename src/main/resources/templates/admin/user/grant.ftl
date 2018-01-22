@@ -83,28 +83,9 @@
     <script src="${ctx!}/assets/js/plugins/validate/messages_zh.min.js"></script>
     <script src="${ctx!}/assets/js/plugins/layer/layer.min.js"></script>
     <script src="${ctx!}/assets/js/plugins/layer/laydate/laydate.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-	    $("#frm").validate({
-    	    rules: {},
-    	    messages: {},
-    	    submitHandler:function(form){
-    	    	$.ajax({
-   	    		   type: "POST",
-   	    		   dataType: "json",
-   	    		   url: "${ctx!}/admin/user/grant/" + ${user.id},
-   	    		   data: $(form).serialize(),
-   	    		   success: function(msg){
-	   	    			layer.msg(msg.message, {time: 2000},function(){
-	   						var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-	   						parent.layer.close(index); 
-	   					});
-   	    		   }
-   	    		});
-            } 
-    	});
-    });
-    </script>
+
+    <!-- Page-Level Scripts -->
+    <script src="${ctx!}/assets/js/admin/user/grant.js?v=1.0.0"></script>
 
 </body>
 

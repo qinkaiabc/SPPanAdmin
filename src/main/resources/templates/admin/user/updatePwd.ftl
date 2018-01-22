@@ -84,48 +84,9 @@
     <script src="${ctx!}/assets/js/plugins/validate/jquery.validate.min.js"></script>
     <script src="${ctx!}/assets/js/plugins/validate/messages_zh.min.js"></script>
     <script src="${ctx!}/assets/js/plugins/layer/layer.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-	    $("#frm").validate({
-    	    rules: {
-    	    	oldPassword: {
-    	        required: true,
-    	        minlength: 4,
-    	    	maxlength: 10
-    	      },
-    	      password1: {
-    	        required: true,
-    	        minlength: 4,
-    	    	maxlength: 10
-    	      },
-    	      password2: {
-    	        required: true,
-    	        minlength: 4,
-    	    	maxlength: 10
-    	      }
-    	    },
-    	    messages: {},
-    	    submitHandler:function(form){
-    	    	$.ajax({
-   	    		   type: "POST",
-   	    		   dataType: "json",
-   	    		   url: "${ctx!}/admin/user/updatePwd",
-   	    		   data: $(form).serialize(),
-   	    		   success: function(msg){
-   	    		   		if(msg.code ==0){
-   	    		   			window.location.href = "${ctx!}/admin/logout";
-   	    		   		}
-	   	    			layer.msg(msg.message, {time: 2000},function(){
-	   						var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-	   						parent.layer.close(index); 
-	   					});
-   	    		   }
-   	    		});
-            } 
-    	});
-    });
-    </script>
 
+    <!-- Page-Level Scripts -->
+    <script src="${ctx!}/assets/js/admin/user/updatePwd.js?v=1.0.0"></script>
 </body>
 
 </html>
