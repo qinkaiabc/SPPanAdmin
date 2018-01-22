@@ -35,7 +35,7 @@
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
                                     <span class="block m-t-xs" style="font-size:20px;">
-                                        <i class="fa fa-feed"></i>
+                                        <i class="fa fa-area-chart"></i>
                                         <strong class="font-bold">SPPanAdmin</strong>
                                     </span>
                                 </span>
