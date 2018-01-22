@@ -132,9 +132,21 @@
     <!-- 自定义js -->
     <script src="${ctx!}/assets/js/hAdmin.js?v=4.1.0"></script>
     <script type="text/javascript" src="${ctx!}/assets/js/index.js"></script>
-
-    <!-- Page-Level Scripts -->
-    <script src="${ctx!}/assets/js/admin/index.js?v=1.0.0"></script>
+    <script type="text/javascript">
+    function updatePwd(){
+		layer.open({
+	      type: 2,
+	      title: '修改密码',
+	      shadeClose: true,
+	      shade: false,
+	      area: ['893px', '600px'],
+	      content: '${ctx!}/admin/user/updatePwd',
+	      end: function(index){
+	    	  window.location.reload();
+	    	 }
+	    });
+	}
+</script>
 </body>
 
 </html>
