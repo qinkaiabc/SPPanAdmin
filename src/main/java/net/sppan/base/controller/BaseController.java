@@ -77,7 +77,6 @@ public class BaseController {
     		page = Integer.parseInt(request.getParameter("pageNumber")) - 1;
     		size = Integer.parseInt(request.getParameter("pageSize"));
     	} catch (Exception e) {
-    		e.printStackTrace();
     	}
     	PageRequest pageRequest = new PageRequest(page, size, sort);
     	return pageRequest;
