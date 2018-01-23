@@ -1,6 +1,7 @@
 package net.sppan.base.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -49,6 +50,11 @@ public class User extends BaseEntity {
 	 * 昵称
 	 */
 	private String nickName;
+
+	/**
+	 * 头像地址
+	 */
+	private String avatar;
 
 	/**
 	 * 用户密码
@@ -136,6 +142,14 @@ public class User extends BaseEntity {
 
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 
 	public String getPassword() {
@@ -226,12 +240,11 @@ public class User extends BaseEntity {
 		this.updateTime = updateTime;
 	}
 
-	public java.util.Set<Role> getRoles() {
+	public Set<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(java.util.Set<Role> roles) {
+	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-
 }
