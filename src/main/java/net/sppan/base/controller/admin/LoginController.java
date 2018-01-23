@@ -14,31 +14,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController extends BaseController {
-	@RequestMapping(value = { "/admin/login" }, method = RequestMethod.GET)
-	public String login() {
+    @RequestMapping(value = {"/admin/login"}, method = RequestMethod.GET)
+    public String login() {
+        return "admin/login";
+    }
 
-		return "admin/login";
-	}
-	@RequestMapping(value = { "/admin/login" }, method = RequestMethod.POST)
-	public String login(@RequestParam("username") String username,
-			@RequestParam("password") String password,ModelMap model
-			) {
-		try {
-			 Subject subject = SecurityUtils.getSubject();
-			 UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-			subject.login(token);
-			return redirect("/admin/index");
-		} catch (AuthenticationException e) {
-			model.put("message", e.getMessage());
-		}
-		return "admin/login";
-	}
-	
-	@RequestMapping(value = { "/admin/logout" }, method = RequestMethod.GET)
-	public String logout() {
-		Subject subject = SecurityUtils.getSubject();
-		subject.logout();
-		return redirect("admin/login");
-	}
-	
+    @RequestMapping(value = {"/admin/login"}, method = RequestMethod.POST)
+    public String login(@RequestParam("username") String username,
+                        @RequestParam("password") String password,
+                        @RequestParam(value = "remember", required = false) boolean remember,
+                        ModelMap model) {
+        try {
+            System.out.println(remember);
+            Subject subject = SecurityUtils.getSubject();
+            UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+            subject.login(token);
+            return redirect("/admin/index");
+        } catch (AuthenticationException e) {
+            model.put("message", e.getMessage());
+        }
+        return "admin/login";
+    }
+
+    @RequestMapping(value = {"/admin/logout"}, method = RequestMethod.GET)
+    public String logout() {
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return redirect("admin/login");
+    }
+
 }
