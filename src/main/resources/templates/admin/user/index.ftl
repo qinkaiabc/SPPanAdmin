@@ -4,6 +4,11 @@
 <style>
 </style>
 </#assign>
+<#assign js>
+    <script>
+
+    </script>
+</#assign>
 <@layout title="用户管理" active="user">
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -35,19 +40,52 @@
                     <th>删除状态</th>
                     <th>锁定</th>
                     <th>创建时间</th>
+                    <th>操作</th>
                 </tr>
                 <#list pageInfo.content as userInfo>
                 <tr>
                     <td>${userInfo.id}</td>
                     <td>${userInfo.userName}</td>
                     <td>${userInfo.nickName}</td>
-                    <td>${userInfo.sex}</td>
+                    <td>
+                        <#if userInfo.sex == 1>
+                            <span class="label label-success">男</span>
+                        <#elseif userInfo.sex == 0>
+                            <span class="label label-danger">女</span>
+                        <#else >
+                            <span class="label label-warning">未知</span>
+                        </#if>
+                    </td>
                     <td>${userInfo.telephone}</td>
                     <td>${userInfo.email}</td>
                     <td>${userInfo.address}</td>
-                    <td>${userInfo.deleteStatus}</td>
-                    <td>${userInfo.locked}</td>
+                    <td>
+                        <#if userInfo.deleteStatus == 1>
+                            <span class="label label-danger">已删除</span>
+                        <#else>
+                            <span class="label label-success">未删除</span>
+                        </#if>
+                    </td>
+                    <td>
+                        <#if userInfo.locked == 1>
+                            <span class="label label-danger">已锁定</span>
+                        <#else>
+                            <span class="label label-success">未锁定</span>
+                        </#if>
+
+                    </td>
                     <td>${userInfo.createTime}</td>
+                    <td>
+                    <@shiro.hasPermission name="system:user:edit">
+                        <a class="btn btn-sm btn-primary" href="${ctx!}/admin/user/edit/${userInfo.id}">编辑</a>
+                    </@shiro.hasPermission>
+                    <@shiro.hasPermission name="system:user:grant">
+                        <button class="btn btn-sm btn-success">分配角色</button>
+                    </@shiro.hasPermission>
+                    <@shiro.hasPermission name="system:user:deleteBatch">
+                        <button class="btn btn-sm btn-danger">删除</button>
+                    </@shiro.hasPermission>
+                    </td>
                 </tr>
                 </#list>
             </table>

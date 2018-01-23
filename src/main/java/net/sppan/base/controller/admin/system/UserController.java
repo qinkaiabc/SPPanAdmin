@@ -33,7 +33,7 @@ public class UserController extends BaseController {
     private IRoleService roleService;
 
     @RequestMapping(value = {"/index"})
-    public String list(ModelMap modelMap) {
+    public String index(ModelMap modelMap) {
         Page<User> page = userService.findAll(getPageRequest());
         modelMap.put("pageInfo", page);
         return "admin/user/index";

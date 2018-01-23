@@ -17,10 +17,12 @@
     <link rel="stylesheet" href="/assets/plugins/Ionicons/css/ionicons.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/assets/css/AdminLTE.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="/assets/css/_all-skins.css">
-  ${css!}
+    <link rel="stylesheet" href="/assets/css/_all-skins.css">
+    <!-- layer -->
+    <link rel="stylesheet" href="/assets/plugins/layer/theme/default/layer.css">
+    ${css!}
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -166,6 +168,8 @@
 <script src="/assets/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="/assets/js/adminlte.js"></script>
+<!-- layer -->
+<script src="/assets/plugins/layer/layer.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()

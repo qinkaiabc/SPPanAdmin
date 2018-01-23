@@ -1,7 +1,7 @@
 <#macro page pageInfo url>
     <#local pageNo = pageInfo.number + 1>
     <#local totalPage = pageInfo.totalPages>
-    <#local showPages = 3>
+    <#local showPages = 6>
     <ul class="pagination pagination-sm no-margin pull-right">
         <#if pageNo!=1 && totalPage gt 1>
             <li><a href="${url!}&pageNumber=1">首页</a></li>
@@ -27,7 +27,7 @@
         <#assign pages=start..end/>
         <#list pages as page>
             <#if page==pageNo>
-                <li><a href="${url!}&pageNumber=${page}" class="active">${page}</a></li>
+                <li class="active"><a href="${url!}&pageNumber=${page}">${page}</a></li>
             <#else>
                 <li><a href="${url!}&pageNumber=${page}">${page}</a></li>
             </#if>
