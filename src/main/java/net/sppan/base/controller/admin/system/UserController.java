@@ -66,6 +66,9 @@ public class UserController extends BaseController {
     @ResponseBody
     public JsonResult delete(@PathVariable Integer id, ModelMap map) {
         try {
+            if (id == 1) {
+                throw new Exception("超级管理员不能删除");
+            }
             userService.delete(id);
         } catch (Exception e) {
             e.printStackTrace();

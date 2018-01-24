@@ -12,20 +12,10 @@
             data: $(".form-edit").serialize(),
             dataType: "JSON",
             success: function(res){
-                console.log(res);
-                if (res.code == 0) {
-                    layer.msg(res.message, {
-                        icon: 1,
-                        time: 2000
-                    }, function(){
-                        location.reload();
-                    });
-                } else {
-                    layer.msg(res.message, {
-                        icon: 2,
-                        time: 2000
-                    });
-                }
+                layer.msg(res.message, {time: 2000
+                }, function(){
+                    location.reload();
+                });
             }
         });
     });
@@ -52,7 +42,7 @@
     <div class="row">
         <div class="col-md-10">
             <!-- Default box -->
-            <div class="box">
+            <div class="box  box-primary">
                 <form class="form-horizontal form-edit" method="post" action="${ctx!}/admin/user/edit">
                     <div class="box-body">
                         <input type="hidden" id="id" name="id" value="${user.id}">

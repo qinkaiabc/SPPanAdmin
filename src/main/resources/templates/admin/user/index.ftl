@@ -5,9 +5,22 @@
 </style>
 </#assign>
 <#assign js>
-    <script>
-
-    </script>
+<script>
+    function del(id) {
+        layer.confirm('确定删除吗?', {icon: 3, title: '提示'}, function (index) {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "${ctx!}/admin/user/delete/" + id,
+                success: function (msg) {
+                    layer.msg(msg.message, {time: 2000}, function () {
+                        location.reload();
+                    });
+                }
+            });
+        });
+    }
+</script>
 </#assign>
 <@layout title="用户管理" active="user">
 <!-- Content Header (Page header) -->
@@ -26,7 +39,10 @@
 <!-- Main content -->
 <section class="content">
     <!-- Default box -->
-    <div class="box">
+    <div class="box box-primary">
+        <div class="box-header">
+            <a class="btn btn-sm btn-success" href="${ctx!}/admin/user/add">新增</a>
+        </div>
         <div class="box-body">
             <table class="table table-striped">
                 <tr>
@@ -49,7 +65,7 @@
                     <td>${userInfo.nickName}</td>
                     <td>
                         <#if userInfo.sex == 1>
-                            <span class="label label-success">男</span>
+                            <span class="label label-info">男</span>
                         <#elseif userInfo.sex == 0>
                             <span class="label label-danger">女</span>
                         <#else >
@@ -63,14 +79,14 @@
                         <#if userInfo.deleteStatus == 1>
                             <span class="label label-danger">已删除</span>
                         <#else>
-                            <span class="label label-success">未删除</span>
+                            <span class="label label-info">未删除</span>
                         </#if>
                     </td>
                     <td>
                         <#if userInfo.locked == 1>
                             <span class="label label-danger">已锁定</span>
                         <#else>
-                            <span class="label label-success">未锁定</span>
+                            <span class="label label-info">未锁定</span>
                         </#if>
 
                     </td>
@@ -80,10 +96,10 @@
                         <a class="btn btn-sm btn-primary" href="${ctx!}/admin/user/edit/${userInfo.id}">编辑</a>
                     </@shiro.hasPermission>
                     <@shiro.hasPermission name="system:user:grant">
-                        <button class="btn btn-sm btn-success">分配角色</button>
+                        <a class="btn btn-sm btn-warning" href="${ctx!}/admin/user/grant/${userInfo.id}">分配角色</a>
                     </@shiro.hasPermission>
                     <@shiro.hasPermission name="system:user:deleteBatch">
-                        <button class="btn btn-sm btn-danger">删除</button>
+                        <button class="btn btn-sm btn-danger" onclick="del(${userInfo.id})">删除</button>
                     </@shiro.hasPermission>
                     </td>
                 </tr>

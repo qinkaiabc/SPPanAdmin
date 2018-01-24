@@ -15,7 +15,7 @@
 <!-- Main content -->
 <section class="content">
     <!-- Default box -->
-    <div class="box">
+    <div class="box box-primary">
         <div class="box-body">
             欢迎使用
         </div>

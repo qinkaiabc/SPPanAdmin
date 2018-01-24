@@ -1,3 +1,6 @@
+### 系统样式改版中。。。
+新版本使用AdminLTE2模版开发，目前尚在开发中，详情见dev分支。
+
 1. 系统管理后台基本框架SPPanAdmin，包括用户管理，角色管理，资源链接管理模块，可以动态分配权限和角色。
 2. 使用springboot、springdata jpa、shiro等服务端技术，使用freemarker模版渲染页面。
 3. 系统中对springdata的查询条件Specification做了简单的封装，更加方便查询条件的灵活使用。
