@@ -17,3 +17,9 @@
 6. 系统启动后，访问：127.0.0.1/admin/会自动跳转到后台登录页面。
 7. 初始用户名和密码为：admin/111111。
 8. 演示图片：
+![输入图片说明](http://whoismy8023.gitee.io/2017/04/24/images/SPPanAdmin/1.png "在这里输入图片标题")
+![输入图片说明](http://whoismy8023.gitee.io/2017/04/24/images/SPPanAdmin/2.png "在这里输入图片标题")
+![输入图片说明](http://whoismy8023.gitee.io/2017/04/24/images/SPPanAdmin/3.png "在这里输入图片标题")
+![输入图片说明](http://whoismy8023.gitee.io/2017/04/24/images/SPPanAdmin/4.png "在这里输入图片标题")
+![输入图片说明](http://whoismy8023.gitee.io/2017/04/24/images/SPPanAdmin/5.png "在这里输入图片标题")
+![输入图片说明](http://whoismy8023.gitee.io/2017/04/24/images/SPPanAdmin/6.png "在这里输入图片标题")
