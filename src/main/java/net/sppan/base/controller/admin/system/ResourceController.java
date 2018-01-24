@@ -30,24 +30,12 @@ public class ResourceController extends BaseController {
 		List<ZtreeView> list = resourceService.tree(resourceId);
 		return list;
 	}
-	
-	@RequestMapping("/index")
-	public String index() {
-		return "admin/resource/index";
-	}
 
-	@RequestMapping("/list")
-	@ResponseBody
-	public Page<Resource> list(
-			@RequestParam(value="searchText",required=false) String searchText
-			) {
-//		SimpleSpecificationBuilder<Resource> builder = new SimpleSpecificationBuilder<Resource>();
-//		String searchText = request.getParameter("searchText");
-//		if(StringUtils.isNotBlank(searchText)){
-//			builder.add("name", Operator.likeAll.name(), searchText);
-//		}
-		Page<Resource> page = resourceService.findAllByLike(searchText,getPageRequest());
-		return page;
+	@RequestMapping("/index")
+	public String index(ModelMap map) {
+		Page<Resource> page = resourceService.findAll(getPageRequest());
+		map.put("pageInfo", page);
+		return "admin/resource/index";
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)

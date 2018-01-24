@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v11.24 (32 bit)
-MySQL - 5.5.56-MariaDB : Database - base
+SQLyog Ultimate v12.09 (64 bit)
+MySQL - 5.5.41 : Database - base
 *********************************************************************
 */
 
@@ -12,10 +12,6 @@ MySQL - 5.5.56-MariaDB : Database - base
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`base` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-USE `base`;
-
 /*Table structure for table `tb_resource` */
 
 DROP TABLE IF EXISTS `tb_resource`;
@@ -86,6 +82,7 @@ DROP TABLE IF EXISTS `tb_user`;
 CREATE TABLE `tb_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `address` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `birthday` datetime DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `delete_status` int(11) DEFAULT NULL,
@@ -103,7 +100,7 @@ CREATE TABLE `tb_user` (
 
 /*Data for the table `tb_user` */
 
-insert  into `tb_user`(`id`,`address`,`birthday`,`create_time`,`delete_status`,`description`,`email`,`locked`,`nick_name`,`password`,`sex`,`telephone`,`update_time`,`user_name`) values (1,'成都','2017-01-09 17:26:39','2017-01-09 17:26:41',0,'超级管理员','whoismy8023@163.com',0,'admin','3931MUEQD1939MQMLM4AISPVNE',1,'15923930000','2017-01-09 17:27:11','admin');
+insert  into `tb_user`(`id`,`address`,`avatar`,`birthday`,`create_time`,`delete_status`,`description`,`email`,`locked`,`nick_name`,`password`,`sex`,`telephone`,`update_time`,`user_name`) values (1,'成都','https://gitee.com/uploads/78/559378_whoismy8023.png?1482721399','2017-01-09 17:26:39','2017-01-09 17:26:41',0,'超级管理员','whoismy8023@163.com',0,'admin','3931MUEQD1939MQMLM4AISPVNE',1,'15923930000','2017-01-09 17:27:11','admin');
 
 /*Table structure for table `tb_user_role` */
 

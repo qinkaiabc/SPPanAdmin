@@ -21,9 +21,6 @@
             }
         });
     });
-    $(".btn-back").click(function () {
-        window.history.back();
-    });
 </script>
 </#assign>
 
@@ -46,8 +43,8 @@
         <div class="col-md-10">
             <!-- Default box -->
             <div class="box  box-primary">
-                <div class="box-body">
-                    <form class="form-horizontal form-edit" method="post" action="${ctx!}/admin/user/updatePwd">
+                <form class="form-horizontal form-edit" method="post" action="${ctx!}/admin/user/updatePwd">
+                    <div class="box-body">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">原始密码：</label>
                             <div class="col-sm-8">
@@ -71,12 +68,12 @@
                                 <button class="btn btn-primary" type="submit">提交</button>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="box-footer">
-                    <button type="button" class="btn btn-default btn-back">返回</button>
-                    <button type="button" class="btn btn-info pull-right btn-submit">提交</button>
-                </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="button" class="btn btn-default btn-back">返回</button>
+                        <button type="button" class="btn btn-info pull-right btn-submit">提交</button>
+                    </div>
+                </form>
             </div>
             <!-- /.box -->
         </div>

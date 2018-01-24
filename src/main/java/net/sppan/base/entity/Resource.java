@@ -71,7 +71,7 @@ public class Resource extends BaseEntity {
 	/**
 	 * 图标
 	 */
-	private String icon;
+		private String icon;
 
 	/**
 	 * 是否隐藏
@@ -83,7 +83,7 @@ public class Resource extends BaseEntity {
 	/**
 	 * 描述
 	 */
-	private String description;
+		private String description;
 
 	/**
 	 * 创建时间

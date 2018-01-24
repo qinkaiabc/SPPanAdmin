@@ -12,8 +12,8 @@
                 type: "POST",
                 dataType: "json",
                 url: "${ctx!}/admin/user/delete/" + id,
-                success: function (msg) {
-                    layer.msg(msg.message, {time: 2000}, function () {
+                success: function (res) {
+                    layer.msg(res.message, {time: 2000}, function () {
                         location.reload();
                     });
                 }
@@ -41,7 +41,9 @@
     <!-- Default box -->
     <div class="box box-primary">
         <div class="box-header">
+        <@shiro.hasPermission name="system:user:add">
             <a class="btn btn-sm btn-success" href="${ctx!}/admin/user/add">新增</a>
+        </@shiro.hasPermission>
         </div>
         <div class="box-body">
             <table class="table table-striped">

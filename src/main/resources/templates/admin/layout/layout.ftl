@@ -167,9 +167,12 @@
 <!-- layer -->
 <script src="/assets/plugins/layer/layer.js"></script>
 <script>
-  $(document).ready(function () {
-    $('.sidebar-menu').tree()
-  })
+    $(document).ready(function () {
+        $('.sidebar-menu').tree();
+        $(".btn-back").click(function () {
+            window.history.back();
+        });
+    })
 </script>
 ${js!}
 </body>

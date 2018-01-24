@@ -19,9 +19,6 @@
             }
         });
     });
-    $(".btn-back").click(function () {
-        window.history.back();
-    });
 </script>
 </#assign>
 <@layout title="用户编辑" active="user">

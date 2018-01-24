@@ -1,233 +1,98 @@
-<!DOCTYPE html>
-<html>
+<#include "/admin/layout/layout.ftl">
+<#import "/admin/layout/macro.ftl" as macro>
+<#assign css>
+<style>
+</style>
+</#assign>
+<#assign js>
+<script>
+    function del(id){
+        layer.confirm('确定删除吗?', {icon: 3, title:'提示'}, function(index){
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "${ctx!}/admin/resource/delete/" + id,
+                success: function(res){
+                    layer.msg(res.message, {time: 2000}, function () {
+                        location.reload();
+                    });
+                }
+            });
+        });
+    }
+</script>
+</#assign>
+<@layout title="资源管理" active="resource">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        资源列表
+        <small>一切从这里开始</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-cog"></i> 系统</a></li>
+        <li><a href="#"><i class="fa fa-list-ul"></i> 资源管理</a></li>
+        <li class="active"><i class="fa fa-table"></i> 资源列表</li>
+    </ol>
+</section>
 
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <title>资源列表</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-
-    <link rel="shortcut icon" href="favicon.ico"> 
-    <link href="${ctx!}/assets/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="${ctx!}/assets/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-
-    <link href="${ctx!}/assets/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
-
-    <link href="${ctx!}/assets/css/animate.css" rel="stylesheet">
-    <link href="${ctx!}/assets/css/style.css?v=4.1.0" rel="stylesheet">
-
-</head>
-
-<body class="gray-bg">
-    <div class="wrapper wrapper-content  animated fadeInRight">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="ibox ">
-                    <div class="ibox-title">
-                        <h5>资源管理</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <p>
-                        	<@shiro.hasPermission name="system:resource:add">
-                        		<button class="btn btn-success " type="button" onclick="add();"><i class="fa fa-plus"></i>&nbsp;添加</button>
-                        	</@shiro.hasPermission>
-                        </p>
-                        <hr>
-                        <div class="row row-lg">
-		                    <div class="col-sm-12">
-		                        <!-- Example Card View -->
-		                        <div class="example-wrap">
-		                            <div class="example">
-		                            	<table id="table_list"></table>
-		                            </div>
-		                        </div>
-		                        <!-- End Example Card View -->
-		                    </div>
-	                    </div>
-                    </div>
-                </div>
-            </div>
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box box-primary">
+        <div class="box-header">
+		<@shiro.hasPermission name="system:resource:add">
+			<a class="btn btn-sm btn-success" href="${ctx!}/admin/resource/add">新增</a>
+		</@shiro.hasPermission>
+        </div>
+        <div class="box-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>资源名称</th>
+                    <th>资源key</th>
+                    <th>类型</th>
+                    <th>资源url</th>
+                    <th>层级</th>
+                    <th>排序</th>
+                    <th>icon</th>
+                    <th>是否隐藏</th>
+                    <th>描述</th>
+                    <th>更新时间</th>
+                    <th>操作</th>
+                </tr>
+                <#list pageInfo.content as resourceInfo>
+                <tr>
+                    <td>${resourceInfo.id}</td>
+                    <td>${resourceInfo.name}</td>
+                    <td>${resourceInfo.sourceKey}</td>
+                    <td>${resourceInfo.type}</td>
+                    <td>${resourceInfo.sourceUrl}</td>
+                    <td>${resourceInfo.level}</td>
+                    <td>${resourceInfo.sort}</td>
+                    <td>${resourceInfo.icon}</td>
+                    <td>${resourceInfo.isHide}</td>
+                    <td>${resourceInfo.description}</td>
+                    <td>${resourceInfo.updateTime}</td>
+                    <td>
+					<@shiro.hasPermission name="system:resource:edit">
+					<a class="btn btn-sm btn-primary" href="${ctx!}/admin/resource/edit/${resourceInfo.id}">编辑</a>
+					</@shiro.hasPermission>
+                    <@shiro.hasPermission name="system:resource:deleteBatch">
+                        <button class="btn btn-sm btn-danger" onclick="del(${resourceInfo.id})">删除</button>
+					</@shiro.hasPermission>
+					</td>
+                </tr>
+				</#list>
+            </table>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer clearfix">
+            <@macro.page pageInfo=pageInfo url="${ctx!}/admin/resource/index?" />
         </div>
     </div>
+    <!-- /.box -->
 
-    <!-- 全局js -->
-    <script src="${ctx!}/assets/js/jquery.min.js?v=2.1.4"></script>
-    <script src="${ctx!}/assets/js/bootstrap.min.js?v=3.3.6"></script>
-
-
-	<!-- Bootstrap table -->
-    <script src="${ctx!}/assets/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
-    <script src="${ctx!}/assets/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
-    <script src="${ctx!}/assets/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
-
-    <!-- Peity -->
-    <script src="${ctx!}/assets/js/plugins/peity/jquery.peity.min.js"></script>
-
-    <script src="${ctx!}/assets/js/plugins/layer/layer.min.js"></script>
-
-    <!-- 自定义js -->
-    <script src="${ctx!}/assets/js/content.js?v=1.0.0"></script>
-
-    <!-- Page-Level Scripts -->
-    <script>
-        $(document).ready(function () {
-			//初始化表格,动态从服务器加载数据  
-			$("#table_list").bootstrapTable({
-			    //使用get请求到服务器获取数据  
-			    method: "POST",
-			    //必须设置，不然request.getParameter获取不到请求参数
-			    contentType: "application/x-www-form-urlencoded",
-			    //获取数据的Servlet地址  
-			    url: "${ctx!}/admin/resource/list",
-			    //表格显示条纹  
-			    striped: true,
-			    //启动分页  
-			    pagination: true,
-			    //每页显示的记录数  
-			    pageSize: 10,
-			    //当前第几页  
-			    pageNumber: 1,
-			    //记录数可选列表  
-			    pageList: [5, 10, 15, 20, 25],
-			    //是否启用查询  
-			    search: true,
-			    //是否启用详细信息视图
-			    detailView:true,
-			    detailFormatter:detailFormatter,
-			    //表示服务端请求  
-			    sidePagination: "server",
-			    //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder  
-			    //设置为limit可以获取limit, offset, search, sort, order  
-			    queryParamsType: "undefined",
-			    //json数据解析
-			    responseHandler: function(res) {
-			        return {
-			            "rows": res.content,
-			            "total": res.totalElements
-			        };
-			    },
-			    //数据列
-			    columns: [{
-			        title: "ID",
-			        field: "id",
-			        sortable: true
-			    },{
-			        title: "资源名称",
-			        field: "name"
-			    },{
-			        title: "资源KEY",
-			        field: "sourceKey"
-			    },{
-			        title: "资源类型",
-			        field: "type",
-			        formatter: function(value,row,index){
-			        	if(value == 0)
-                    		return '<span class="label label-info">目录</span>';
-                    	else if(value == 1)
-                    		return '<span class="label label-primary">菜单</span>';
-                    	else if(value == 2)
-                    		return '<span class="label label-warning">按钮</span>';
-			        }
-			    },{
-			        title: "资源URL",
-			        field: "sourceUrl"
-			    },{
-			        title: "层级",
-			        field: "level",
-			        sortable: true
-			    },{
-			        title: "排序",
-			        field: "sort",
-			        sortable: true
-			    },{
-			        title: "图标",
-			        field: "icon"
-			    },{
-			        title: "状态",
-			        sortable: true,
-			        field: "isHide",
-                    formatter: function (value, row, index) {
-                    	if(value == 0)
-                    		return '<span class="label label-info">显示</span>';
-                    	else if(value == 1)
-                    		return '<span class="label label-danger">隐藏</span>';
-                    }
-			    },{
-			        title: "创建时间",
-			        field: "createTime",
-			        sortable: true
-			    },{
-			        title: "更新时间",
-			        field: "updateTime",
-			        sortable: true
-			    },{
-			        title: "操作",
-			        field: "empty",
-                    formatter: function (value, row, index) {
-                    	var operateHtml = '<@shiro.hasPermission name="system:resource:add"><button class="btn btn-primary btn-xs" type="button" onclick="edit(\''+row.id+'\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;</@shiro.hasPermission>';
-                    	operateHtml = operateHtml + '<@shiro.hasPermission name="system:resource:deleteBatch"><button class="btn btn-danger btn-xs" type="button" onclick="del(\''+row.id+'\')"><i class="fa fa-remove"></i>&nbsp;删除</button></@shiro.hasPermission>';
-                        return operateHtml;
-                    }
-			    }]
-			});
-        });
-        
-        function edit(id){
-        	layer.open({
-        	      type: 2,
-        	      title: '资源修改',
-        	      shadeClose: true,
-        	      shade: false,
-        	      area: ['893px', '600px'],
-        	      content: '${ctx!}/admin/resource/edit/' + id,
-        	      end: function(index){
-        	    	  $('#table_list').bootstrapTable("refresh");
-       	    	  }
-        	    });
-        }
-        function add(){
-        	layer.open({
-        	      type: 2,
-        	      title: '资源添加',
-        	      shadeClose: true,
-        	      shade: false,
-        	      area: ['893px', '600px'],
-        	      content: '${ctx!}/admin/resource/add',
-        	      end: function(index){
-        	    	  $('#table_list').bootstrapTable("refresh");
-       	    	  }
-        	    });
-        }
-        function del(id){
-        	layer.confirm('确定删除吗?', {icon: 3, title:'提示'}, function(index){
-        		$.ajax({
-    	    		   type: "POST",
-    	    		   dataType: "json",
-    	    		   url: "${ctx!}/admin/resource/delete/" + id,
-    	    		   success: function(msg){
-	 	   	    			layer.msg(msg.message, {time: 2000},function(){
-	 	   	    				$('#table_list').bootstrapTable("refresh");
-	 	   	    				layer.close(index);
-	 	   					});
-    	    		   }
-    	    	});
-       		});
-        }
-        
-        function detailFormatter(index, row) {
-	        var html = [];
-	        html.push('<p><b>描述:</b> ' + row.description + '</p>');
-	        return html.join('');
-	    }
-    </script>
-
-    
-    
-
-</body>
-
-</html>
+</section>
+<!-- /.content -->
+</@layout>

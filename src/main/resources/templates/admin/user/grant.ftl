@@ -18,9 +18,6 @@
             }
         });
     });
-    $(".btn-back").click(function () {
-        window.history.back();
-    });
 </script>
 </#assign>
 <@layout title="角色分配" active="user">
@@ -42,8 +39,8 @@
         <div class="col-md-10">
             <!-- Default box -->
             <div class="box  box-primary">
-                <div class="box-body">
-                    <form class="form-horizontal form-grant" method="post" action="${ctx!}/admin/user/save">
+                <form class="form-horizontal form-grant" method="post" action="${ctx!}/admin/user/save">
+                    <div class="box-body">
                         <input type="hidden" id="id" name="id" value="${user.id}">
                         <div class="form-group">
                             <#list roles as role>
@@ -60,12 +57,12 @@
                                 </div>
                             </#list>
                         </div>
-                    </form>
-                </div>
-                <div class="box-footer">
-                    <button type="button" class="btn btn-default btn-back">返回</button>
-                    <button type="button" class="btn btn-info pull-right btn-submit">提交</button>
-                </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="button" class="btn btn-default btn-back">返回</button>
+                        <button type="button" class="btn btn-info pull-right btn-submit">提交</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
