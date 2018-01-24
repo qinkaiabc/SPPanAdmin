@@ -12,10 +12,4 @@ public class AdminIndexController extends BaseController{
 		
 		return "admin/index";
 	}
-	
-	@RequestMapping(value = {"/admin/welcome"})
-	public String welcome(){
-		
-		return "admin/welcome";
-	}
 }

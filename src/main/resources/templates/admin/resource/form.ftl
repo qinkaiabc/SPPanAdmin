@@ -47,6 +47,7 @@
                             <label class="col-sm-3 control-label">上级资源：</label>
                             <div class="col-sm-8">
                                 <select name="parent.id" class="form-control">
+                                    <option value="">系统</option>
                                     <#list list as r>
                                         <option value="${r.id}" <#if resource.parent.id == r.id>selected="selected"</#if>>
                                             <#if r.level == 1>|-<#elseif  r.level == 2>　|-<#else>　　|-</#if>${r.name}

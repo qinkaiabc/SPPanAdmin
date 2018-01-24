@@ -9,6 +9,7 @@ import net.sppan.base.entity.Role;
 import net.sppan.base.entity.User;
 import net.sppan.base.service.IUserService;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -70,15 +71,17 @@ public class MyRealm extends AuthorizingRealm {
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken token) throws AuthenticationException {
 		String username = (String) token.getPrincipal();
-		
-		User user = userService.findByUserName(username);
-		
-		String password = new String((char[]) token.getCredentials());
 
+		User user = userService.findByUserName(username);
 		// 账号不存在
 		if (user == null) {
 			throw new UnknownAccountException("账号或密码不正确");
 		}
+		Object credentials = token.getCredentials();
+		if (credentials == null) {
+			throw new UnknownAccountException("账号或密码不正确");
+		}
+		String password = new String((char[]) credentials);
 		// 密码错误
 		if (!MD5Utils.md5(password).equals(user.getPassword())) {
 			throw new IncorrectCredentialsException("账号或密码不正确");

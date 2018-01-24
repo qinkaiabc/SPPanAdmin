@@ -1,7 +1,6 @@
 package net.sppan.base.controller.admin;
 
 import net.sppan.base.controller.BaseController;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -22,10 +21,8 @@ public class LoginController extends BaseController {
     @RequestMapping(value = {"/admin/login"}, method = RequestMethod.POST)
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
-                        @RequestParam(value = "remember", required = false) boolean remember,
                         ModelMap model) {
         try {
-            System.out.println(remember);
             Subject subject = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
             subject.login(token);

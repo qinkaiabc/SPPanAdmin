@@ -56,7 +56,7 @@
                     <th>层级</th>
                     <th>排序</th>
                     <th>icon</th>
-                    <th>是否隐藏</th>
+                    <th>状态</th>
                     <th>描述</th>
                     <th>更新时间</th>
                     <th>操作</th>
@@ -66,12 +66,26 @@
                     <td>${resourceInfo.id}</td>
                     <td>${resourceInfo.name}</td>
                     <td>${resourceInfo.sourceKey}</td>
-                    <td>${resourceInfo.type}</td>
+                    <td>
+                        <#if resourceInfo.type == 0>
+                            <span class="label label-info">目录</span>
+                        <#elseif resourceInfo.type == 1>
+                            <span class="label label-danger">菜单</span>
+                        <#else >
+                            <span class="label label-warning">按钮</span>
+                        </#if>
+                    </td>
                     <td>${resourceInfo.sourceUrl}</td>
                     <td>${resourceInfo.level}</td>
                     <td>${resourceInfo.sort}</td>
                     <td>${resourceInfo.icon}</td>
-                    <td>${resourceInfo.isHide}</td>
+                    <td>
+                    <#if resourceInfo.isHide == 1>
+                            <span class="label label-danger">隐藏</span>
+                    <#else>
+                            <span class="label label-info">显示</span>
+                    </#if>
+                    </td>
                     <td>${resourceInfo.description}</td>
                     <td>${resourceInfo.updateTime}</td>
                     <td>
