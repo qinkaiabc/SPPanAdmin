@@ -1,6 +1,7 @@
 ### 2018-01-24 新版本
 使用AdminLTE2模版开发,原来的Hadmin版本见分支[SPPanAdmin_Hadmin](https://github.com/whoismy8023/SPPanAdmin/tree/SPPanAdmin_Hadmin)
 
+### 说明
 1. 系统管理后台基本框架SPPanAdmin，包括用户管理，角色管理，资源链接管理模块，可以动态分配权限和角色。
 2. 使用springboot、springdata jpa、shiro等服务端技术，使用freemarker模版渲染页面。
 3. 系统中对springdata的基本查询条件做了简单的封装，更加方便查询。
