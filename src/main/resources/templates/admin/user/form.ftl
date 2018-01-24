@@ -24,12 +24,12 @@
     });
 </script>
 </#assign>
-<@layout title="用户管理" active="user">
+<@layout title="用户编辑" active="user">
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        用户列表
-        <small>一切从这里开始</small>
+        用户编辑
+        <small>编辑用户详细信息</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-cog"></i> 系统</a></li>
@@ -56,6 +56,12 @@
                             <label class="col-sm-2 control-label">昵称：</label>
                             <div class="col-sm-10">
                                 <input id="nickName" name="nickName" class="form-control" type="text" value="${user.nickName}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">头像URL：</label>
+                            <div class="col-sm-10">
+                                <input id="avatar" name="avatar" class="form-control" type="url" value="${user.avatar}">
                             </div>
                         </div>
                         <div class="form-group">

@@ -23,12 +23,12 @@
     });
 </script>
 </#assign>
-<@layout title="用户管理" active="user">
+<@layout title="角色分配" active="user">
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
         角色分配
-        <small>一切从这里开始</small>
+        <small>分配用户关联角色</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-cog"></i> 系统</a></li>
