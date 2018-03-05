@@ -15,12 +15,12 @@ import net.sppan.base.entity.Resource;
 @Repository
 public interface IResourceDao extends IBaseDao<Resource, Integer> {
 
-	@Modifying
-	@Query(nativeQuery = true,value = "DELETE FROM tb_role_resource WHERE resource_id = :id")
-	void deleteGrant(@Param("id") Integer id);
+    @Modifying
+    @Query(nativeQuery = true, value = "DELETE FROM tb_role_resource WHERE resource_id = :id")
+    void deleteGrant(@Param("id") Integer id);
 
-	Page<Resource> findAllByNameContaining(String searchText, Pageable pageable);
+    Page<Resource> findAllByNameContaining(String searchText, Pageable pageable);
 
-	List<Resource> findAllByOrderByParentAscIdAscSortAsc();
+    List<Resource> findAllByOrderByParentAscIdAscSortAsc();
 
 }

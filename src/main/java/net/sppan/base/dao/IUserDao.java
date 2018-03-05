@@ -10,8 +10,8 @@ import net.sppan.base.entity.User;
 @Repository
 public interface IUserDao extends IBaseDao<User, Integer> {
 
-	User findByUserName(String username);
+    User findByUserName(String username);
 
-	Page<User> findAllByNickNameContaining(String searchText, Pageable pageable);
+    Page<User> findAllByNickNameContaining(String searchText, Pageable pageable);
 
 }

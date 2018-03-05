@@ -15,10 +15,10 @@ public class FreeMarkerConfig {
 
     @PostConstruct
     public void setSharedVariable() {
-    	try {
-			configuration.setSharedVariable("shiro", new ShiroTags());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        try {
+            configuration.setSharedVariable("shiro", new ShiroTags());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

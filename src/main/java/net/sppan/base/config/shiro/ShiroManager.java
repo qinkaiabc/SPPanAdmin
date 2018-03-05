@@ -10,7 +10,7 @@ import org.springframework.context.annotation.DependsOn;
 
 /**
  * Shiro Config Manager.
- * 
+ *
  * @author SPPan
  */
 public class ShiroManager {
@@ -40,6 +40,7 @@ public class ShiroManager {
 
     /**
      * 开启注解控制权限的方式
+     *
      * @param securityManager
      * @return
      */

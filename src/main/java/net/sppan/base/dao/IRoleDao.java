@@ -10,6 +10,6 @@ import net.sppan.base.entity.Role;
 @Repository
 public interface IRoleDao extends IBaseDao<Role, Integer> {
 
-	Page<Role> findAllByNameContainingOrDescriptionContaining(String searchText1,String searchText2, Pageable pageable);
+    Page<Role> findAllByNameContainingOrDescriptionContaining(String searchText1, String searchText2, Pageable pageable);
 
 }

@@ -25,7 +25,7 @@ public abstract class BaseServiceImpl<T extends BaseEntity, ID extends Serializa
         return getBaseDao().findOne(id);
     }
 
-    @Override	
+    @Override
     public List<T> findAll() {
         return getBaseDao().findAll();
     }
