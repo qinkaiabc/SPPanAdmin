@@ -50,14 +50,14 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource, Integer>
         List<ZtreeView> resulTreeNodes = new ArrayList<ZtreeView>();
         Role role = roleService.find(roleId);
         Set<Resource> roleResources = role.getResources();
-        resulTreeNodes.add(new ZtreeView(0L, null, "系统菜单", true));
+        resulTreeNodes.add(new ZtreeView(-1L, null, "系统菜单", true));
         ZtreeView node;
         List<Resource> all = resourceDao.findAllByOrderByParentAscIdAscSortAsc();
         for (Resource resource : all) {
             node = new ZtreeView();
             node.setId(Long.valueOf(resource.getId()));
             if (resource.getParent() == null) {
-                node.setpId(0L);
+                node.setpId(-1L);
             } else {
                 node.setpId(Long.valueOf(resource.getParent().getId()));
             }
