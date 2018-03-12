@@ -49,6 +49,6 @@ public class ShiroManager {
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(DefaultSecurityManager securityManager) {
         AuthorizationAttributeSourceAdvisor aasa = new AuthorizationAttributeSourceAdvisor();
         aasa.setSecurityManager(securityManager);
-        return new AuthorizationAttributeSourceAdvisor();
+        return aasa;
     }
 }
