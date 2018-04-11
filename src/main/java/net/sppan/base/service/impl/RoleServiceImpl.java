@@ -78,7 +78,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Integer> implements I
         Set<Resource> resources = new HashSet<Resource>();
         if (resourceIds != null) {
             for (int i = 0; i < resourceIds.length; i++) {
-                if (StringUtils.isBlank(resourceIds[i]) || "0".equals(resourceIds[i])) {
+                if (StringUtils.isBlank(resourceIds[i]) || "-1".equals(resourceIds[i])) {
                     continue;
                 }
                 Integer rid = Integer.parseInt(resourceIds[i]);

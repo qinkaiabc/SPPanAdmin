@@ -4,7 +4,12 @@
 
 </#assign>
 <#assign js>
+<script src="/assets/plugins/laydate/laydate.js"></script> <!-- 改成你的路径 -->
 <script>
+    laydate.render({
+        elem: '#birthday' //指定元素
+        ,type: 'datetime'
+    });
     $(".btn-submit").click(function () {
         $.ajax({
             type: "POST",
@@ -73,7 +78,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">出生日期：</label>
                             <div class="col-sm-10">
-                                <input id="birthday" name="birthday" readonly="readonly" class="laydate-icon form-control layer-date" value="${user.birthday}">
+                                <input id="birthday" name="birthday" class="laydate-icon form-control layer-date" value="${user.birthday}">
                             </div>
                         </div>
                         <div class="form-group">

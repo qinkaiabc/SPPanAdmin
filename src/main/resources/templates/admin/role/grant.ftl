@@ -7,24 +7,24 @@
 <script src="${ctx!}/assets/plugins/zTree/jquery.ztree.all.min.js"></script>
 <script>
     var setting = {
-        check : {
-            enable : true
+        check: {
+            enable: true
         },
-        data : {
-            simpleData : {
-                enable : true
+        data: {
+            simpleData: {
+                enable: true
             }
         }
     };
     setting.check.chkboxType = {
-        "Y" : "ps",
-        "N" : "s"
+        "Y": "ps",
+        "N": "s"
     };
     $.ajax({
-        type : "POST",
-        url : "${ctx!}/admin/resource/tree/" + ${role.id},
-        dataType : 'json',
-        success : function(msg) {
+        type: "POST",
+        url: "${ctx!}/admin/resource/tree/" + ${role.id},
+        dataType: 'json',
+        success: function (msg) {
             $.fn.zTree.init($("#tree"), setting, msg);
         }
     });
@@ -33,23 +33,23 @@
     $(".btn-submit").click(function () {
         var treeObj = $.fn.zTree.getZTreeObj("tree");
         var nodes = treeObj.getCheckedNodes(true);
-        var selectIds="";
-        for(var index in nodes){
-            var item=nodes[index];
-            selectIds+=item.id+",";
+        var selectIds = [];
+        for (var index in nodes) {
+            var item = nodes[index];
+            selectIds.push(item.id)
         }
         $.ajax({
-            url : "${ctx!}/admin/role/grant/${role.id}?t=" + Math.random(),
-            type : "post",
-            dataType : "json",
-            data : {"resourceIds":selectIds},
-            success : function(msg) {
-                layer.msg(msg.message, {time: 2000},function(){
+            url: "${ctx!}/admin/role/grant/${role.id}?t=" + Math.random(),
+            type: "post",
+            dataType: "json",
+            data: {"resourceIds": selectIds.join(",")},
+            success: function (msg) {
+                layer.msg(msg.message, {time: 2000}, function () {
                     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                     parent.layer.close(index);
                 });
             },
-            error : function(r,s,m) {
+            error: function (r, s, m) {
             }
         });
     });
@@ -74,13 +74,13 @@
         <div class="col-md-10">
             <!-- Default box -->
             <div class="box  box-primary">
-				<div class="box-body">
+                <div class="box-body">
                     <ul id="tree" class="ztree"></ul>
-				</div>
-				<div class="box-footer">
-					<button type="button" class="btn btn-default btn-back">返回</button>
-					<button type="button" class="btn btn-info pull-right btn-submit">提交</button>
-				</div>
+                </div>
+                <div class="box-footer">
+                    <button type="button" class="btn btn-default btn-back">返回</button>
+                    <button type="button" class="btn btn-info pull-right btn-submit">提交</button>
+                </div>
             </div>
         </div>
     </div>
