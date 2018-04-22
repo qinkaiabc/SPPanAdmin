@@ -16,6 +16,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+// http://shiro.apache.org/spring-boot.html#configuration-properties
 @Configuration
 public class ShiroConfig {
     @javax.annotation.Resource
