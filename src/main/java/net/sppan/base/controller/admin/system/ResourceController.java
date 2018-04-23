@@ -33,8 +33,8 @@ public class ResourceController extends BaseController {
 
     @RequestMapping("/index")
     public String index(ModelMap map) {
-        Page<Resource> page = resourceService.findAll(getPageRequest());
-        map.put("pageInfo", page);
+        List<Resource> list = resourceService.findAll();
+        map.put("list", list);
         return "admin/resource/index";
     }
 

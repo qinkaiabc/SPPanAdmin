@@ -1,18 +1,26 @@
 <#include "/admin/layout/layout.ftl">
 <#import "/admin/layout/macro.ftl" as macro>
 <#assign css>
+<link href="/assets/plugins/jquery-treetable/css/jquery.treetable.css" rel="stylesheet">
+<link href="/assets/plugins/jquery-treetable/css/jquery.treetable.theme.default.css" rel="stylesheet">
 <style>
 </style>
 </#assign>
 <#assign js>
+<script src="/assets/plugins/jquery-treetable/js/jquery.treetable.js"></script>
 <script>
-    function del(id){
-        layer.confirm('确定删除吗?', {icon: 3, title:'提示'}, function(index){
+    $(function () {
+        var option = {expandable: true, theme: 'vsStyle'};
+        $('#treeTable').treetable(option);
+    });
+
+    function del(id) {
+        layer.confirm('确定删除吗?', {icon: 3, title: '提示'}, function (index) {
             $.ajax({
                 type: "POST",
                 dataType: "json",
                 url: "${ctx!}/admin/resource/delete/" + id,
-                success: function(res){
+                success: function (res) {
                     layer.msg(res.message, {time: 2000}, function () {
                         location.reload();
                     });
@@ -42,14 +50,14 @@
     <div class="box box-primary">
         <div class="box-header">
 		<@shiro.hasPermission name="system:resource:add">
-			<a class="btn btn-sm btn-success" href="${ctx!}/admin/resource/add">新增</a>
-		</@shiro.hasPermission>
+            <a class="btn btn-sm btn-success" href="${ctx!}/admin/resource/add">新增</a>
+        </@shiro.hasPermission>
         </div>
         <div class="box-body">
-            <table class="table table-striped">
+            <table class="table table-striped" id="treeTable">
                 <tr>
-                    <th>ID</th>
                     <th>资源名称</th>
+                    <th>ID</th>
                     <th>资源key</th>
                     <th>类型</th>
                     <th>资源url</th>
@@ -61,10 +69,10 @@
                     <th>更新时间</th>
                     <th>操作</th>
                 </tr>
-                <#list pageInfo.content as resourceInfo>
-                <tr>
-                    <td>${resourceInfo.id}</td>
+                <#list list as resourceInfo>
+                <tr data-tt-id="${resourceInfo.id}" data-tt-parent-id="${resourceInfo.parent.id}">
                     <td>${resourceInfo.name}</td>
+                    <td>${resourceInfo.id}</td>
                     <td>${resourceInfo.sourceKey}</td>
                     <td>
                         <#if resourceInfo.type == 0>
@@ -81,7 +89,7 @@
                     <td>${resourceInfo.icon}</td>
                     <td>
                     <#if resourceInfo.isHide == 1>
-                            <span class="label label-danger">隐藏</span>
+                        <span class="label label-danger">隐藏</span>
                     <#else>
                             <span class="label label-info">显示</span>
                     </#if>
@@ -91,18 +99,14 @@
                     <td>
 					<@shiro.hasPermission name="system:resource:edit">
 					<a class="btn btn-sm btn-primary" href="${ctx!}/admin/resource/edit/${resourceInfo.id}">编辑</a>
-					</@shiro.hasPermission>
+                    </@shiro.hasPermission>
                     <@shiro.hasPermission name="system:resource:deleteBatch">
                         <button class="btn btn-sm btn-danger" onclick="del(${resourceInfo.id})">删除</button>
-					</@shiro.hasPermission>
-					</td>
+                    </@shiro.hasPermission>
+                    </td>
                 </tr>
-				</#list>
+                </#list>
             </table>
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer clearfix">
-            <@macro.page pageInfo=pageInfo url="${ctx!}/admin/resource/index?" />
         </div>
     </div>
     <!-- /.box -->
