@@ -10,18 +10,18 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="/assets/plugins/bootstarp/css/bootstrap.css">
+    <link rel="stylesheet" href="${ctx!}/assets/plugins/bootstarp/css/bootstrap.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="${ctx!}/assets/plugins/font-awesome/css/font-awesome.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="/assets/plugins/Ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="${ctx!}/assets/plugins/Ionicons/css/ionicons.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/assets/css/AdminLTE.css">
+    <link rel="stylesheet" href="${ctx!}/assets/css/AdminLTE.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="/assets/css/_all-skins.css">
+    <link rel="stylesheet" href="${ctx!}/assets/css/_all-skins.css">
     <!-- layer -->
-    <link rel="stylesheet" href="/assets/plugins/layer/theme/default/layer.css">
+    <link rel="stylesheet" href="${ctx!}/assets/plugins/layer/theme/default/layer.css">
     ${css!}
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -155,17 +155,17 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="/assets/plugins/jquery/jquery.min.js"></script>
+<script src="${ctx!}/assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="/assets/plugins/bootstarp/js/bootstrap.js"></script>
+<script src="${ctx!}/assets/plugins/bootstarp/js/bootstrap.js"></script>
 <!-- SlimScroll -->
-<script src="/assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="${ctx!}/assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 <!-- FastClick -->
-<script src="/assets/plugins/fastclick/fastclick.js"></script>
+<script src="${ctx!}/assets/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="/assets/js/adminlte.js"></script>
+<script src="${ctx!}/assets/js/adminlte.js"></script>
 <!-- layer -->
-<script src="/assets/plugins/layer/layer.js"></script>
+<script src="${ctx!}/assets/plugins/layer/layer.js"></script>
 <script>
     $(document).ready(function () {
         $('.sidebar-menu').tree();

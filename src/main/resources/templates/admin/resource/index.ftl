@@ -1,13 +1,13 @@
 <#include "/admin/layout/layout.ftl">
 <#import "/admin/layout/macro.ftl" as macro>
 <#assign css>
-<link href="/assets/plugins/jquery-treetable/css/jquery.treetable.css" rel="stylesheet">
-<link href="/assets/plugins/jquery-treetable/css/jquery.treetable.theme.default.css" rel="stylesheet">
+<link href="${ctx!}/assets/plugins/jquery-treetable/css/jquery.treetable.css" rel="stylesheet">
+<link href="${ctx!}/assets/plugins/jquery-treetable/css/jquery.treetable.theme.default.css" rel="stylesheet">
 <style>
 </style>
 </#assign>
 <#assign js>
-<script src="/assets/plugins/jquery-treetable/js/jquery.treetable.js"></script>
+<script src="${ctx!}/assets/plugins/jquery-treetable/js/jquery.treetable.js"></script>
 <script>
     $(function () {
         var option = {expandable: true, theme: 'vsStyle'};

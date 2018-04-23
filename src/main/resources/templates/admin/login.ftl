@@ -7,15 +7,15 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="/assets/plugins/bootstarp/css/bootstrap.css">
+    <link rel="stylesheet" href="${ctx!}/assets/plugins/bootstarp/css/bootstrap.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="${ctx!}/assets/plugins/font-awesome/css/font-awesome.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="/assets/plugins/Ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="${ctx!}/assets/plugins/Ionicons/css/ionicons.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/assets/css/AdminLTE.css">
+    <link rel="stylesheet" href="${ctx!}/assets/css/AdminLTE.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="/assets/plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="${ctx!}/assets/plugins/iCheck/square/blue.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -65,11 +65,11 @@
 <!-- /.login-box -->
 
 <!-- jQuery 3 -->
-<script src="/assets/plugins/jquery/jquery.min.js"></script>
+<script src="${ctx!}/assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="/assets/plugins/bootstarp/js/bootstrap.js"></script>
+<script src="${ctx!}/assets/plugins/bootstarp/js/bootstrap.js"></script>
 <!-- iCheck -->
-<script src="/assets/plugins/iCheck/icheck.js"></script>
+<script src="${ctx!}/assets/plugins/iCheck/icheck.js"></script>
 <script>
     $(function () {
         $('input').iCheck({

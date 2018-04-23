@@ -4,7 +4,7 @@
 
 </#assign>
 <#assign js>
-<script src="/assets/plugins/laydate/laydate.js"></script> <!-- 改成你的路径 -->
+<script src="${ctx!}/assets/plugins/laydate/laydate.js"></script> <!-- 改成你的路径 -->
 <script>
     laydate.render({
         elem: '#birthday' //指定元素
